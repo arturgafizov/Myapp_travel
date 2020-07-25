@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stepik Travel</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container mt-3">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" data-test="logo" href="#">Stepik Travel</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav" data-test="navigation">
+          <li class="nav-item active">
+            {% for key, value in departure.items %}
+                {% if key == 'msk'%}
+                    <a class="nav-link" href="/departure/{{ key }}/" data-test="navlink">{{ departure.msk }} </a>
+                {% endif %}
+            {% endfor %}
+          </li>
+          <li class="nav-item">
+            {% for key, value in departure.items %}
+                {% if key == 'spb'%}
+                    <a class="nav-link" href="/departure/{{ key }}/" data-test="navlink">{{ departure.spb }} </a>
+                {% endif %}
+            {% endfor %}
+          </li>
+          <li class="nav-item">
+            {% for key, value in departure.items %}
+                {% if key == 'nsk'%}
+                    <a class="nav-link" href="/departure/{{ key }}/" data-test="navlink">{{ departure.nsk }} </a>
+                {% endif %}
+            {% endfor %}
+          </li>
+          <li class="nav-item">
+            {% for key, value in departure.items %}
+                {% if key == 'ekb'%}
+                    <a class="nav-link" href="/departure/{{ key }}/" data-test="navlink">{{ departure.ekb }} </a>
+                {% endif %}
+            {% endfor %}
+          </li>
+          <li class="nav-item">
+            {% for key, value in departure.items %}
+                {% if key == 'kazan'%}
+                    <a class="nav-link" href="/departure/{{ key }}/" data-test="navlink">{{ departure.kazan }} </a>
+                {% endif %}
+            {% endfor %}
+          </li>
+        </ul>
+      </div>
+    </nav>
+{% block container %}
+    <!-- HERO -->
+
+    <div class="jumbotron text-center mt-4">
+      <h1 class="display-4">Всякие туры  </h1>
+      <p class="lead">Для тех, кого отвлекают дома </p>
+      <p class="mt-5 w-50 mx-auto">Лучшие направления,где никто не будет вам мешать сидеть на берегу и изучать программирование, дизайн, разработку игр и управление продуктами</p>
+    </div>
+
+    <!-- CARDS -->
+    <div class="row mt-5" data-test="cards">
+        {% for key, value in tour.items %}
+            {% for lk in ls %}
+                {% if lk == key %}
+                    {% for k, v in value.items %}
+                        {% if k == 'picture' %}
+                        <div class="col-4" data-test="card">
+                            <div class="card mb-3" >
+                            <img src="{{ v }}" class="card-img-top img-fluid" data-test="picture">
+                            <div class="card-body">
+                              <h5 class="card-title">
+                                  {% for k, v in value.items %}
+                                      {% if k == 'title' %}
+                                          {{ v }}
+                                      {% endif %}
+                                  {% endfor %}
+                              </h5>
+                              <p class="card-text">
+                                  {% for k, v in value.items %}
+                                      {% if k == 'description' %}
+                                          {{ v }}
+                                      {% endif %}
+                                  {% endfor %}
+                              </p>
+                              <a href="/tour/{{ key }}/" class="btn btn-sm btn-primary" data-test="tourlink">Подробнее</a>
+                            </div>
+                        </div>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
+{% block container2 %}
+
+
+
+{% endblock %}
+</body>
+</html>
